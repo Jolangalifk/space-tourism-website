@@ -44,10 +44,12 @@ onMounted(async () => {
     <body>
         <Navbar />
         <main>
-            <h1 class="title"><span>01</span>PICK YOUR DESTINATION</h1>
+            <div class="h1">
+                <h1 class="title"><span>01</span>PICK YOUR DESTINATION</h1>
+            </div>
             <div class="destination" v-if="destination">
-                <div class="destination-image">
-                    <img :src="destination.images.png" alt="Destination Image" />
+                <div class="destination-image" v-if="destination">
+                    <img :src="images" alt="Destination Image" />
                 </div>
                 <div class="destination-text">
                     <div class="destination-list">
@@ -247,5 +249,284 @@ main {
     font-size: 2rem;
     font-family: 'Bellefair', serif;
     margin: 0;
+}
+
+@media (max-width: 768px) {
+    .h1 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+    }
+
+    .title {
+        color: white;
+        font-size: 1.2rem;
+        font-family: 'Barlow Condensed', sans-serif;
+        padding: 0;
+        letter-spacing: 3px;
+    }
+
+    .title span {
+        color: rgba(93, 93, 93, 0.7);
+        font-size: 1.2rem;
+        font-weight: bold;
+        font-family: 'Barlow Condensed', sans-serif;
+        letter-spacing: 5px;
+        margin-right: 1rem;
+    }
+
+    .destination {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+        padding-top: 0;
+    }
+
+    .destination-image {
+        width: 200px;
+        height: 200px;
+        margin-left: 0;
+        border: 1px solid white;
+    }
+
+    .destination-text {
+        display: flex;
+        flex-direction: column;
+        padding: 2rem;
+        padding-left: 0;
+        padding-right: 0;
+        width: 100%;
+        align-items: center;
+    }
+
+    .destination-text h1 {
+        font-size: 4rem;
+    }
+
+    .destination-text p {
+        width: 100%;
+        font-size: 1rem;
+        margin-bottom: 2.5rem;
+        text-align: center;
+    }
+
+    .destination-list {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding-left: 0;
+    }
+
+    .destination-list ul {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        list-style: none;
+        padding: 0;
+        margin-bottom: 1rem;
+    }
+
+    .destination-list ul li {
+        padding-bottom: 0.5rem;
+    }
+
+    .destination-list ul li.active {
+        border-bottom: 4px solid white;
+        color: white;
+        transition: 0.4s;
+    }
+
+    .destination-list ul li:hover {
+        border-bottom: 4px solid rgba(255, 255, 255, 0.1);
+        transition: 0.4s;
+    }
+
+    .destination-list ul li a {
+        text-decoration: none;
+        font-family: 'Barlow Condensed', sans-serif;
+        font-size: 1rem;
+        font-weight: normal;
+        color: #D0D6F9;
+        letter-spacing: 3px;
+    }
+
+    .destination-list ul li a.active {
+        color: white;
+    }
+
+    .destination-distance-and-time {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 2.5rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .destination-distance {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin-bottom: 2rem;
+        align-items: center;
+    }
+
+    .destination-distance p {
+        color: #D0D6F9;
+        font-size: 1rem;
+        font-family: 'Barlow Condensed', sans-serif;
+        letter-spacing: 3px;
+        margin: 0;
+    }
+
+    .destination-distance h2 {
+        color: white;
+        font-size: 2rem;
+        font-family: 'Bellefair', serif;
+        margin: 0;
+    }
+
+    .destination-time {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+    }
+
+    .destination-time p {
+        color: #D0D6F9;
+        font-size: 1rem;
+        font-family: 'Barlow Condensed', sans-serif;
+        letter-spacing: 3px;
+        margin: 0;
+    }
+
+    .destination-time h2 {
+        color: white;
+        font-size: 2rem;
+        font-family: 'Bellefair', serif;
+        margin: 0;
+    }
+
+
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .h1 {
+        display: flex;
+        padding: 2rem;
+    }
+
+    .title {
+        color: white;
+        font-size: 1.5rem;
+        font-family: 'Barlow Condensed', sans-serif;
+        padding: 0;
+        letter-spacing: 3px;
+    }
+
+    .title span {
+        color: rgba(93, 93, 93, 0.7);
+        font-size: 1.5rem;
+        font-weight: bold;
+        font-family: 'Barlow Condensed', sans-serif;
+        letter-spacing: 5px;
+        margin-right: 1rem;
+    }
+
+    .destination {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+        padding-top: 0;
+    }
+
+    .destination-image {
+        width: 350px;
+        height: 350px;
+        margin-left: 0;
+        border: 1px solid white;
+    }
+
+    .destination-text {
+        display: flex;
+        flex-direction: column;
+        padding: 2rem;
+        padding-left: 0;
+        padding-right: 0;
+        width: 100%;
+        align-items: center;
+    }
+
+    .destination-text h1 {
+        font-size: 6rem;
+    }
+
+    .destination-text p {
+        width: 75%;
+        font-size: 1rem;
+        margin-bottom: 2.5rem;
+        text-align: center;
+    }
+
+    .destination-list {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding-left: 0;
+        margin-bottom: 2rem;
+    }
+
+    .destination-distance-and-time {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding-top: 2.5rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .destination-distance {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        width: 50%;
+    }
+
+    .destination-distance p {
+        color: #D0D6F9;
+        font-size: 1rem;
+        font-family: 'Barlow Condensed', sans-serif;
+        letter-spacing: 3px;
+        margin: 0;
+        margin-bottom: 1rem;
+    }
+
+    .destination-time {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        width: 50%;
+    }
+
+    .destination-time p {
+        color: #D0D6F9;
+        font-size: 1rem;
+        font-family: 'Barlow Condensed', sans-serif;
+        letter-spacing: 3px;
+        margin: 0;
+        margin-bottom: 1rem;
+    }
+    
 }
 </style>

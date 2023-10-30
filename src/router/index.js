@@ -18,16 +18,15 @@ const router = createRouter({
       component: () => import('../views/AboutView.vue')
     },
     {
-      path: '/crew',
+      path: '/crew/:role',
       name: 'crew',
       component: () => import('../views/Crew.vue')
     },
     {
-      path: '/technology',
+      path: '/technology/:name',
       name: 'technology',
       component: () => import('../views/Technology.vue')
     },
-    // Menambahkan rute untuk destinasi dinamis
     {
       path: '/destination/:name',
       name: 'destination',

@@ -10,7 +10,9 @@ import Navbar from '@/components/Navbar.vue'
         <div class="space-text">
           <h2>SO, YOU WANT TO TRAVEL TO</h2>
           <h1>SPACE</h1>
-          <P>Let’s face it; if you want to go to space, you might as well genuinely go to outer space and not hover kind of on the edge of it. Well sit back, and relax because we’ll give you a truly out of this world experience!</P>
+          <P>Let’s face it; if you want to go to space, you might as well genuinely go to outer space and not hover kind
+            of on the edge of it. Well sit back, and relax because we’ll give you a truly out of this world experience!
+          </P>
         </div>
         <div class="space-button">
           <button>
@@ -101,7 +103,7 @@ main {
 .space-button button p {
   color: #0B0D17;
   font-size: 2rem;
-  font-family:  'Bellefair', serif;
+  font-family: 'Bellefair', serif;
   margin: 0;
 }
 
@@ -110,4 +112,116 @@ main {
   transition: 0.4s;
 }
 
+@media (max-width: 767.98px) {
+
+  body {
+    background-image: url('@/assets/image/background-mobile-home.png');
+  }
+
+  .space-info {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+
+  .space-text {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 0;
+    padding-bottom: 2rem;
+  }
+
+  .space-text h2 {
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+  }
+
+  .space-text h1 {
+    font-size: 5rem;
+  }
+
+  .space-text p {
+    width: 115%;
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  .space-button {
+    width: 100%;
+    padding: 0;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  .space-button button {
+    width: 200px;
+    height: 200px;
+  }
+
+  .space-button button p {
+    font-size: 1.5rem;
+  }
+
+  .space-button button:hover {
+    outline: 50px solid rgba(255, 255, 255, 0.1);
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  
+    .space-info {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding-top: 5rem;
+      padding-bottom: 5rem;
+    }
+  
+    .space-text {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      padding: 0;
+      padding-bottom: 2rem;
+    }
+  
+    .space-text h2 {
+      font-size: 1.5rem;
+      letter-spacing: 3px;
+    }
+  
+    .space-text h1 {
+      font-size: 10rem;
+    }
+  
+    .space-text p {
+      width: 60%;
+      font-size: 1.2rem;
+      text-align: center;
+      margin-bottom: 5rem;
+    }
+  
+    .space-button {
+      width: 100%;
+      padding: 0;
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+    }
+  
+    .space-button button {
+      width: 200px;
+      height: 200px;
+    }
+  
+    .space-button button p {
+      font-size: 1.5rem;
+    }
+  
+    .space-button button:hover {
+      outline: 50px solid rgba(255, 255, 255, 0.1);
+    }
+}
 </style>
