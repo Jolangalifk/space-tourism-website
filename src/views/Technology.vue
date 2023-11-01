@@ -415,7 +415,6 @@ main {
         margin: 0;
         padding: 0;
         order: -1;
-        border: 1px solid white;
         margin-bottom: 2rem;
         margin-top: 1rem;
     }
