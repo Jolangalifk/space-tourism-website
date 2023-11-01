@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, onBeforeUnmount } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import Navbar from '@/components/Navbar.vue'
 import JsonData from '@/assets/api/data.json'
@@ -8,24 +8,60 @@ const route = useRoute()
 const router = useRouter()
 const crew = ref(null)
 const crewList = ref([])
+const currentCrewIndex = ref(0);
+const isAutoPlaying = ref(true);
+const autoPlayInterval = 2000;
 
-const handleCrewSelection = (selectedCrew) => {
-  crew.value = selectedCrew
-  router.push({ role: 'crew', params: { role: selectedCrew.role.toLowerCase() } })
-}
+let clickedIndex = null;
+
+const handleCrewSelection = (selectedCrew, index) => {
+  crew.value = selectedCrew;
+  router.push({ role: 'crew', params: { role: selectedCrew.role.toLowerCase() } });
+  clickedIndex = index;
+};
 
 const isCrewActive = (cr) => {
-  const crewRole = route.params.role
-  return cr.role && cr.role.toLowerCase() === crewRole.toLowerCase()
-}
+  const crewRole = route.params.role;
+  return cr.role && cr.role.toLowerCase() === crewRole.toLowerCase();
+};
+
+const nextCrew = () => {
+  if (clickedIndex !== null) {
+    currentCrewIndex.value = clickedIndex;
+    clickedIndex = null; 
+  } else {
+    currentCrewIndex.value = (currentCrewIndex.value + 1) % crewList.value.length;
+  }
+  crew.value = crewList.value[currentCrewIndex.value];
+};
+
+let autoPlayTimer;
+
+const startAutoPlay = () => {
+  isAutoPlaying.value = true;
+  autoPlayTimer = setInterval(() => {
+    nextCrew();
+  }, autoPlayInterval);
+};
+
+const stopAutoPlay = () => {
+  isAutoPlaying.value = false;
+  clearInterval(autoPlayTimer);
+};
 
 onMounted(() => {
-  crewList.value = JsonData.crew
-  const selectedCrew = crewList.value.find(
-    (cr) => route.params.role && cr.role.toLowerCase() === route.params.role.toLowerCase()
-  )
-  crew.value = selectedCrew
-})
+  crewList.value = JsonData.crew;
+  const activeIndex = crewList.value.findIndex(isCrewActive);
+  if (activeIndex !== -1) {
+    currentCrewIndex.value = activeIndex;
+  }
+  crew.value = crewList.value[currentCrewIndex.value];
+  startAutoPlay();
+});
+
+onBeforeUnmount(() => {
+  stopAutoPlay();
+});
 </script>
 
 <template>
@@ -42,17 +78,10 @@ onMounted(() => {
           <p>{{ crew.bio }}</p>
           <div class="crew-list">
             <ul>
-              <li
-                v-for="cr in crewList"
-                :key="cr.role"
-                @click="handleCrewSelection(cr)"
-                :class="{ active: isCrewActive(cr) }"
-              >
-                <router-link
-                  :to="{ name: 'crew', params: { role: cr.role.toLowerCase() } }"
-                  active-class="active"
-                >
-                  <div class="rounded-link" :class="{ active: isCrewActive(cr) }"></div>
+              <li v-for="(cr, index) in crewList" :key="cr.role" @click="handleCrewSelection(cr, index)"
+                :class="{ active: isCrewActive(cr) }">
+                <router-link :to="{ name: 'crew', params: { role: cr.role.toLowerCase() } }">
+                  <div class="rounded-link" :class="{ active:  index === currentCrewIndex }"></div>
                 </router-link>
               </li>
             </ul>
@@ -166,6 +195,8 @@ main {
   width: 100%;
   padding: 0;
   gap: 30px;
+  transition: transform 0.5s ease; /* Menambahkan animasi perpindahan */
+  transform: translateX(0); /* Mengatur awalnya tidak ada perpindahan */
 }
 
 .crew-list ul li {

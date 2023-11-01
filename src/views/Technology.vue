@@ -53,7 +53,7 @@ onMounted(() => {
                     <p>{{ technology.description }}</p>
                 </div>
                 <div class="technology-image">
-                    <img :src="technology.images.landscape" alt="Technology Image" />
+                    <img :src="technology.images.portrait" alt="Technology Image" />
                 </div>
             </div>
         </main>
@@ -182,8 +182,8 @@ main {
 }
 
 .technology-image {
-    width: 515px;
-    height: 527px;
+    width: 550px;
+    height: 500px;
     margin-left: 11rem;
 }
 
