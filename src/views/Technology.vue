@@ -65,6 +65,8 @@ body {
     margin: 0;
     padding: 0;
     background-image: url('@/assets/image/background-technology-desktop.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 main {

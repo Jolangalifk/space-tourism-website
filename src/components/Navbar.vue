@@ -9,8 +9,10 @@
         <nav v-if="!showMenu">
             <ul>
                 <li v-for="(route, index) in routes" :key="index" :class="{ active: isRouteActive(route.to) }">
-                    <span>{{ index.toString().padStart(2, '0') }}</span>
-                    <router-link :to="route.to">{{ route.label }}</router-link>
+                    <router-link :to="route.to">
+                        <span>{{ index.toString().padStart(2, '0') }}</span>
+                        {{ route.label }}
+                    </router-link>
                 </li>
             </ul>
         </nav>
@@ -167,12 +169,15 @@ nav ul li span {
 }
 
 nav ul li a {
+    height: 100%;
     text-decoration: none;
     font-family: 'Barlow Condensed', sans-serif;
     font-size: 1rem;
     font-weight: normal;
     color: white;
     letter-spacing: 3px;
+    display: flex;
+    align-items: center;
 }
 
 .header-image {

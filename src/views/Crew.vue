@@ -102,6 +102,8 @@ body {
   font-family: 'Roboto', sans-serif;
   background-color: black;
   background-image: url('@/assets/image/background-crew-desktop.png');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 main {

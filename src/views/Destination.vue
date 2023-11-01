@@ -79,6 +79,8 @@ body {
     font-family: 'Roboto', sans-serif;
     background-color: black;
     background-image: url('@/assets/image/background-destination-desktop.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 main {

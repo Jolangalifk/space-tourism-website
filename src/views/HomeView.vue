@@ -32,8 +32,9 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Roboto', sans-serif;
-  background-color: black;
   background-image: url('@/assets/image/background-home-desktop.png');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 main {
@@ -171,7 +172,12 @@ main {
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
-  
+    body {
+      background-image: url('@/assets/image/background-home-tablet.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
     .space-info {
       flex-direction: column;
       align-items: center;
