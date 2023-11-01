@@ -48,8 +48,8 @@ onMounted(async () => {
                 <h1 class="title"><span>01</span>PICK YOUR DESTINATION</h1>
             </div>
             <div class="destination" v-if="destination">
-                <div class="destination-image" v-if="destination">
-                    <img :src="images" alt="Destination Image" />
+                <div class="destination-image">
+                    <img :src="destination.images.png" alt="Destination Image" />
                 </div>
                 <div class="destination-text">
                     <div class="destination-list">
@@ -122,9 +122,9 @@ main {
 }
 
 .destination-image {
-    width: 500px;
-    height: 500px;
-    margin-left: 11rem;
+    width: 530px;
+    margin-left: 10rem;
+    margin-right: 5rem;
 }
 
 .destination-image img {
@@ -136,7 +136,6 @@ main {
     flex-direction: column;
     padding: 2rem;
     padding-left: 5rem;
-    padding-right: 5rem;
     width: 50%;
 }
 
@@ -288,8 +287,8 @@ main {
     .destination-image {
         width: 200px;
         height: 200px;
-        margin-left: 0;
-        border: 1px solid white;
+        padding: 0;
+        margin: 0;
     }
 
     .destination-text {
@@ -452,8 +451,8 @@ main {
     .destination-image {
         width: 350px;
         height: 350px;
-        margin-left: 0;
-        border: 1px solid white;
+        margin: 0;
+        padding: 0;
     }
 
     .destination-text {

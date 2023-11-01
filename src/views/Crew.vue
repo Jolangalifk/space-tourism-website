@@ -116,7 +116,6 @@ main {
 .crew {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   padding-left: 4rem;
 }
 
@@ -125,7 +124,8 @@ main {
   flex-direction: column;
   padding: 5rem;
   padding-top: 8rem;
-  width: 60%;
+  padding-right: 0;
+  width: 55%;
 }
 
 .crew-text h2 {
@@ -186,14 +186,9 @@ main {
   cursor: pointer;
 }
 
-.crew-image {
-  width: 40%;
-  display: flex;
-  align-items: center;
-}
-
 .crew-image img {
   width: 100%;
+  object-fit: cover;
 }
 
 @media (max-width: 768px) {
@@ -286,13 +281,15 @@ main {
 
   .crew-image {
     order: -1;
-    width: 350px;
-    height: 250px;
-    border-bottom: 2px solid #979797;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid #383B4B;
   }
 
   .crew-image img {
-    width: 100%;
+    object-fit: cover;
+    width: 50%;
     height: 100%;
   }
 }
@@ -375,6 +372,19 @@ main {
 
   .crew-list ul li {
     cursor: pointer;
+  }
+
+  .crew-image {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid #383B4B;
+  }
+
+  .crew-image img {
+    object-fit: cover;
+    width: 50%;
+    height: 100%;
   }
 
   .rounded-link {

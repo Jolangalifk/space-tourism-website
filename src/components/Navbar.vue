@@ -27,11 +27,13 @@
         </div>
     </header>
 </template>
-  
+
 <script setup>
-import { useRoute } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 import { ref, onBeforeMount, onBeforeUnmount } from "vue";
 
+const route = useRoute();
+const router = useRouter();
 const showMenu = ref(false);
 const menuClicked = ref(false);
 
@@ -42,24 +44,56 @@ const routes = [
     { to: "/technology/Launch vehicle", label: "TECHNOLOGY" },
 ];
 
+let currentDestination = route.params.name || "";
+let currentCrew = route.params.role || "";
+let currentTechnology = route.params.name || "";
+
 const isRouteActive = (to) => {
-    const route = useRoute();
+    if (to === "/destination/moon") {
+        return currentDestination === "moon";
+    } else if (to === "/destination/mars") {
+        return currentDestination === "mars";
+    } else if (to === "/destination/europa") {
+        return currentDestination === "europa";
+    } else if (to === "/destination/titan") {
+        return currentDestination === "titan";
+    }
+
+    if (to === "/crew/Commander") {
+        return currentCrew === "Commander";
+    } else if (to === "/crew/pilot") {
+        return currentCrew === "Pilot";
+    } else if (to === "/crew/Flight engineer") {
+        return currentCrew === "Flight engineer";
+    } else if (to === "/crew/Flight surgeon") {
+        return currentCrew === "Flight surgeon";
+    }
+
+    if (to === "/technology/Launch vehicle") {
+        return currentTechnology === "Launch vehicle";
+    } else if (to === "/technology/Spacecraft") {
+        return currentTechnology === "Spacecraft";
+    } else if (to === "/technology/Space suit") {
+        return currentTechnology === "Space suit";
+    } else if (to === "/technology/Space station") {
+        return currentTechnology === "Space station";
+    }
     return route.path === to;
 };
 
 const toggleMenu = () => {
     showMenu.value = !showMenu.value;
-    menuClicked.value = showMenu.value; 
+    menuClicked.value = showMenu.value;
 };
 
 const closeMenu = () => {
     showMenu.value = false;
-    menuClicked.value = false; 
+    menuClicked.value = false;
 };
 
 const handleResize = () => {
     if (window.innerWidth <= 768) {
-        showMenu.value = menuClicked.value; 
+        showMenu.value = menuClicked.value;
     } else {
         showMenu.value = false;
     }

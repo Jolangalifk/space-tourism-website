@@ -84,6 +84,7 @@ body {
 main {
     padding: 1rem;
     padding-bottom: 0;
+    padding-right: 0;
 }
 
 .title {
@@ -195,13 +196,15 @@ main {
 }
 
 .technology-image {
-    width: 500px;
-    height: 500px;
+    width: 515px;
+    height: 527px;
     margin-left: 11rem;
 }
 
 .technology-image img {
     width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 @media (max-width: 768px) {
@@ -308,12 +311,12 @@ main {
         margin: 0;
         padding: 0;
         order: -1;
-        border: 1px solid white;
     }
 
     .technology-image img {
         width: 100%;
         height: 100%;
+        object-fit: cover;
     }
 }
 
