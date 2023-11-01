@@ -3,6 +3,7 @@ import { ref, onMounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import axios from 'axios';
 import Navbar from '@/components/Navbar.vue';
+import JsonData from '@/assets/api/data.json';
 
 const route = useRoute();
 const router = useRouter();
@@ -21,19 +22,9 @@ const isDestinationActive = (dest) => {
 
 onMounted(async () => {
     try {
-        const response = await axios.get('/src/assets/api/data.json');
-
-        if (response.status === 200) {
-            if (response.data && Array.isArray(response.data.destinations)) {
-                destinationList.value = response.data.destinations;
-                const selectedDestination = destinationList.value.find(dest => route.params.name && dest.name.toLowerCase() === route.params.name.toLowerCase());
-                destination.value = selectedDestination;
-            } else {
-                console.error('Data.json tidak memiliki properti destinations yang sesuai.');
-            }
-        } else {
-            console.error('Error fetching data. Status code:', response.status);
-        }
+        destinationList.value = JsonData.destinations;
+        const selectedDestination = destinationList.value.find(dest => route.params.name && dest.name.toLowerCase() === route.params.name.toLowerCase());
+        destination.value = selectedDestination;
     } catch (error) {
         console.error('Error fetching data:', error);
     }

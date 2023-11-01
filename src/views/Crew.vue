@@ -1,8 +1,8 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import axios from 'axios'
 import Navbar from '@/components/Navbar.vue'
+import JsonData from '@/assets/api/data.json'
 
 const route = useRoute()
 const router = useRouter()
@@ -19,26 +19,12 @@ const isCrewActive = (cr) => {
   return cr.role && cr.role.toLowerCase() === crewRole.toLowerCase()
 }
 
-onMounted(async () => {
-  try {
-    const response = await axios.get('/src/assets/api/data.json')
-
-    if (response.status === 200) {
-      if (response.data && Array.isArray(response.data.crew)) {
-        crewList.value = response.data.crew
-        const selectedCrew = crewList.value.find(
-          (cr) => route.params.role && cr.role.toLowerCase() === route.params.role.toLowerCase()
-        )
-        crew.value = selectedCrew
-      } else {
-        console.error('Data.json tidak memiliki properti crew yang sesuai.')
-      }
-    } else {
-      console.error('Error fetching data. Status code:', response.status)
-    }
-  } catch (error) {
-    console.error('Error fetching data:', error)
-  }
+onMounted(() => {
+  crewList.value = JsonData.crew
+  const selectedCrew = crewList.value.find(
+    (cr) => route.params.role && cr.role.toLowerCase() === route.params.role.toLowerCase()
+  )
+  crew.value = selectedCrew
 })
 </script>
 

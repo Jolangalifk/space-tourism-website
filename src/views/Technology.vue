@@ -1,8 +1,8 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-import axios from 'axios';
 import Navbar from '@/components/Navbar.vue';
+import JsonData from '@/assets/api/data.json';
 
 const route = useRoute();
 const router = useRouter();
@@ -19,24 +19,10 @@ const isTechnologyActive = (tech) => {
     return tech.name && tech.name.toLowerCase() === technologyName.toLowerCase();
 };
 
-onMounted(async () => {
-    try {
-        const response = await axios.get('/src/assets/api/data.json');
-
-        if (response.status === 200) {
-            if (response.data && Array.isArray(response.data.technology)) {
-                technologyList.value = response.data.technology;
-                const selectedTechnology = technologyList.value.find(tech => route.params.name && tech.name.toLowerCase() === route.params.name.toLowerCase());
-                technology.value = selectedTechnology;
-            } else {
-                console.error('Data.json tidak memiliki properti technology yang sesuai.');
-            }
-        } else {
-            console.error('Error fetching data. Status code:', response.status);
-        }
-    } catch (error) {
-        console.error('Error fetching data:', error);
-    }
+onMounted(() => {
+    technologyList.value = JsonData.technology;
+    const selectedTechnology = technologyList.value.find(tech => route.params.name && tech.name.toLowerCase() === route.params.name.toLowerCase());
+    technology.value = selectedTechnology;
 });
 </script>
 
